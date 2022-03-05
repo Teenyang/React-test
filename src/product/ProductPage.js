@@ -1,5 +1,6 @@
 import './ProductPage.css';
 import PRODUCTS from './Products.js'; // import 之前已整理好依照category排序
+import { useState } from 'react';
 
 
 const ProductRow = ({ product }) => (
@@ -16,10 +17,18 @@ const ProductCategoryRow = ({ category }) => (
 )
 
 
-const ProductTable = () => {
+const ProductTable = ({ text }) => {
+  console.log('search text: ', text);
+  let filterProducts = PRODUCTS;
+  if (text) {
+    const regexp = new RegExp(text, "giu");
+    filterProducts = PRODUCTS.filter(product => product.name.match(regexp));
+    console.log('filterProducts: ', filterProducts);
+  }
+
   const list = [];
   let currentCategory = null;
-  PRODUCTS.forEach(product => {
+  filterProducts.forEach(product => {
     if (product.category !== currentCategory) {
       list.push(
         <ProductCategoryRow key={product.category} category={product.category} />
@@ -49,23 +58,28 @@ const ProductTable = () => {
   )
 }
 
-const SearchBar = () => (
-  <div className="SearchBar">
-    <input type="text" className="search_input" placeholder="Search..." />
+const SearchBar = ({ text, setText }) => (
+  <form className="SearchBar">
+    <input type="text" className="search_input" placeholder="Search..."
+      value={text}
+      onChange={(event) => setText(event.target.value)} />
     <label>
       <input type="checkbox" className="search_checkbox" />
       Only show products in stock
     </label>
-  </div>
+  </form>
 )
 
-const FilterableProductTable = () => (
-  <div className="FilterableProductTable">
-    <h1>PRODUCTS</h1>
-    <SearchBar />
-    <ProductTable />
-  </div >
-)
+const FilterableProductTable = () => {
+  const [text, setText] = useState('');
+  return (
+    <div className="FilterableProductTable">
+      <h1>PRODUCTS</h1>
+      <SearchBar text={text} setText={setText} />
+      <ProductTable text={text} />
+    </div >
+  )
+}
 
 export default function ProductPage() {
   return (

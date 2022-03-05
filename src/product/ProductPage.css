@@ -20,14 +20,17 @@
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   width: 100%;
+
   box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
 
   font-size: 1rem;
   font-weight: bold;
 }
 .SearchBar > input:focus {
   outline: none;
-  box-shadow: 0 0 1px;
+  box-shadow: 0 0 0 1px inset;
 }
 .SearchBar label {
   display: block;
@@ -53,7 +56,7 @@
 .ProductTable th,
 .ProductTable td {
   padding: 0.5rem;
-  border: 1px solid black;
+  border: 2px solid black;
   text-align: center;
 }
 .ProductTable .price {

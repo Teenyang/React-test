@@ -17,13 +17,18 @@ const ProductCategoryRow = ({ category }) => (
 )
 
 
-const ProductTable = ({ text }) => {
+const ProductTable = ({ text, isShowStocked }) => {
   console.log('search text: ', text);
   let filterProducts = PRODUCTS;
   if (text) {
     const regexp = new RegExp(text, "giu");
     filterProducts = PRODUCTS.filter(product => product.name.match(regexp));
     console.log('filterProducts: ', filterProducts);
+  }
+
+  if (isShowStocked) {
+    console.log('checkbox: ', isShowStocked);
+    filterProducts = PRODUCTS.filter(product => product.stocked);
   }
 
   const list = [];
@@ -58,13 +63,15 @@ const ProductTable = ({ text }) => {
   )
 }
 
-const SearchBar = ({ text, setText }) => (
+const SearchBar = ({ text, setText, isShowStocked, setStock }) => (
   <form className="SearchBar">
     <input type="text" className="search_input" placeholder="Search..."
       value={text}
       onChange={(event) => setText(event.target.value)} />
     <label>
-      <input type="checkbox" className="search_checkbox" />
+      <input type="checkbox" className="search_checkbox"
+        checked={isShowStocked}
+        onChange={() => setStock(!isShowStocked)} />
       Only show products in stock
     </label>
   </form>
@@ -72,11 +79,14 @@ const SearchBar = ({ text, setText }) => (
 
 const FilterableProductTable = () => {
   const [text, setText] = useState('');
+  const [isShowStocked, setStock] = useState(false);
   return (
     <div className="FilterableProductTable">
       <h1>PRODUCTS</h1>
-      <SearchBar text={text} setText={setText} />
-      <ProductTable text={text} />
+      <SearchBar
+        text={text} setText={setText}
+        isShowStocked={isShowStocked} setStock={setStock} />
+      <ProductTable text={text} isShowStocked={isShowStocked} />
     </div >
   )
 }

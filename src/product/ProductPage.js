@@ -87,7 +87,7 @@ const FilterableProductTable = () => {
         text={text} setText={setText}
         isShowStocked={isShowStocked} setStock={setStock} />
       <ProductTable text={text} isShowStocked={isShowStocked} />
-    </div >
+    </div>
   )
 }
 

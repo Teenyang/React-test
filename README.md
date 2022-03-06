@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# React Practice
+
+* 題目參考：React 文件－[用 React 思考](https://zh-hant.reactjs.org/docs/thinking-in-react.html)
+* 功能：搜尋篩選產品、顯示庫存類型
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

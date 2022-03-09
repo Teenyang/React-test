@@ -1,6 +1,27 @@
 import './GamePage.css';
 import { useState } from 'react';
 
+// Default function：計算優勝狀態
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
 const Square = ({ square, handleClick }) => (
   <button className="square" onClick={handleClick}>
     {square}
@@ -16,7 +37,6 @@ const Board = ({ squares, handleClick }) => {
 
   return (
     <div>
-      {/* <div className="status">{status}</div> */}
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
@@ -71,13 +91,16 @@ const Game = () => {
     setHistory([...history].concat([squares]));
   }
 
+  const winner = calculateWinner(squares);
+  const status = winner ? 'Winner:' + (xIsNext ? 'Ｏ' : 'Ｘ') : 'Next player:' + (xIsNext ? 'Ｘ' : 'Ｏ')
+
   return (
     <div className="game">
       <div className="game-board">
         <Board squares={currentSquare} handleClick={HandleClick} />
       </div>
       <div className="game-info">
-        <div>{/* status */}</div>
+        <div>{status}</div>
         <ol>{/* TODO */}</ol>
       </div>
     </div>

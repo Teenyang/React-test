@@ -45,6 +45,7 @@ ul {
 .game {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .game-info {
@@ -59,15 +60,14 @@ ul {
   width: 500px;
   text-align: center;
 }
-
+h2 {
+  margin: 0;
+}
 ol {
   text-align: left;
 }
 li {
   margin: 0.5rem;
-}
-li button {
-  padding: 0.5rem;
 }
 .current_step {
   font-weight: bold;

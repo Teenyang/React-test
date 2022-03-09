@@ -99,7 +99,11 @@ const Game = () => {
   }
 
   const winner = calculateWinner(squares);
-  const status = winner ? `Winner: ${currentPlayer(xIsNext)}` : `Next player: ${nextPlayer(xIsNext)}`
+  const gameEnd = currentSquare.every(square => square);
+  console.log('gameEnd: ', gameEnd);
+  const status = winner ?
+    `Winner: ${currentPlayer(xIsNext)}` :
+    (gameEnd ? 'The game ends in a tie!' : `Next player: ${nextPlayer(xIsNext)}`);
 
   const jumpTo = (index) => {
     console.log('jumpTo: ', index);
@@ -127,7 +131,7 @@ const Game = () => {
         <Board squares={currentSquare} handleClick={HandleClick} hasWinner={winner} />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <h2>{status}</h2>
         <ol>{Todo}</ol>
       </div>
     </div>

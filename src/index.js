@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import ProductPage from './product/ProductPage.js';
+// import ProductPage from './product/ProductPage.js';
+import GamePage from './game/GamePage.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductPage />
     {/* <App /> */}
+    {/* <ProductPage /> */}
+    <GamePage />
   </React.StrictMode>,
   document.getElementById('root')
 );

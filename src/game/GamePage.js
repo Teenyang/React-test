@@ -110,7 +110,10 @@ const Game = () => {
 
     return (
       <li key={index}>
-        <button onClick={() => jumpTo(index)}>{stepText}</button>
+        <button className={index === stepNumber ? 'current_step' : ''}
+          onClick={() => jumpTo(index)}>
+          {stepText}
+        </button>
       </li>
     )
   })

@@ -108,13 +108,13 @@ const Game = () => {
     return;
   }
 
-  const Todo = history.map((step, index) => {
-    const stepText = index < 1 ? 'Go to game start' : `Go to move #${index}`;
+  const Todo = history.map((step, move) => {
+    const stepText = move < 1 ? 'Go to game start' : `Go to move #${move}`;
 
     return (
-      <li key={index}>
-        <button className={index === stepNumber ? 'current_step' : ''}
-          onClick={() => jumpTo(index)}>
+      <li key={move}>
+        <button className={move === stepNumber ? 'current_step' : ''}
+          onClick={() => jumpTo(move)}>
           {stepText}
         </button>
       </li>

@@ -29,29 +29,22 @@ const Square = ({ square, handleClick, hasWinner }) => (
 );
 
 const Board = ({ squares, handleClick, hasWinner }) => {
-  const renderSquare = (index) => {
-    return (
-      <Square square={squares[index]} handleClick={() => handleClick(index)} hasWinner={hasWinner} />
-    )
-  }
-
+  const rowNumber = 3;
+  const rows = Array(rowNumber).fill(null).map((row, index) => index); // [0, 1, 2]
   return (
     <div>
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </div>
+      {rows.map((row) => (
+        <div className="board-row" key={`row${row}`}>
+          {rows.map((column) => (
+            <Square
+              key={`column${row * rowNumber + column}`}
+              square={squares[row * rowNumber + column]}
+              handleClick={() => handleClick(row * rowNumber + column)} hasWinner={hasWinner}
+            />)
+          )}
+        </div>
+      )
+      )}
     </div>
   );
 }
@@ -62,7 +55,6 @@ const Game = () => {
 
   // 歷史紀錄：初始第0局即為基本九宮格陣列
   const [history, setHistory] = useState([[...initSquares]]);
-
   console.log('history: ', history);
 
   // 遊戲盤數累加
@@ -100,7 +92,6 @@ const Game = () => {
 
   const winner = calculateWinner(squares);
   const gameEnd = currentSquare.every(square => square);
-  console.log('gameEnd: ', gameEnd);
   const status = winner ?
     `Winner: ${currentPlayer(xIsNext)}` :
     (gameEnd ? 'The game ends in a tie!' : `Next player: ${nextPlayer(xIsNext)}`);

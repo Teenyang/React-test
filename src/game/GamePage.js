@@ -78,13 +78,16 @@ const Game = () => {
   // 下一步局面：延續目前局面
   let squares = [...currentSquare];
 
+  const currentPlayer = (xIsNext) => xIsNext ? 'Ｏ' : 'Ｘ';
+  const nextPlayer = (xIsNext) => xIsNext ? 'Ｘ' : 'Ｏ';
+
   const HandleClick = (index) => {
     console.log('HandleClick index: ', index);
     // 若點擊格內已有圖案，則取消執行
     if (squares[index]) return;
 
     // 決定圖案
-    squares[index] = xIsNext ? 'Ｘ' : 'Ｏ';
+    squares[index] = nextPlayer(xIsNext);
     // 切換玩家
     setNext(!xIsNext);
     // 遞增遊戲盤數
@@ -96,7 +99,7 @@ const Game = () => {
   }
 
   const winner = calculateWinner(squares);
-  const status = winner ? `Winner: ${xIsNext ? 'Ｏ' : 'Ｘ'}` : `Next player: ${xIsNext ? 'Ｘ' : 'Ｏ'}`
+  const status = winner ? `Winner: ${currentPlayer(xIsNext)}` : `Next player: ${nextPlayer(xIsNext)}`
 
   const jumpTo = (index) => {
     console.log('jumpTo: ', index);

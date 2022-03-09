@@ -22,16 +22,16 @@ function calculateWinner(squares) {
   return null;
 }
 
-const Square = ({ square, handleClick, gameEnd }) => (
-  <button className="square" onClick={handleClick} disabled={gameEnd && !square}>
+const Square = ({ square, handleClick, hasWinner }) => (
+  <button className="square" onClick={handleClick} disabled={hasWinner && !square}>
     {square}
   </button>
 );
 
-const Board = ({ squares, handleClick, gameEnd }) => {
+const Board = ({ squares, handleClick, hasWinner }) => {
   const renderSquare = (index) => {
     return (
-      <Square square={squares[index]} handleClick={() => handleClick(index)} gameEnd={gameEnd} />
+      <Square square={squares[index]} handleClick={() => handleClick(index)} hasWinner={hasWinner} />
     )
   }
 
@@ -124,7 +124,7 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={currentSquare} handleClick={HandleClick} gameEnd={winner} />
+        <Board squares={currentSquare} handleClick={HandleClick} hasWinner={winner} />
       </div>
       <div className="game-info">
         <div>{status}</div>

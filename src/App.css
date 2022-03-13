@@ -58,8 +58,19 @@ h1 {
 nav {
   margin-bottom: 2rem;
 }
+nav a {
+  text-decoration: none;
+}
+nav a + a {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid white;
+}
 nav a:visited {
   color: white;
+}
+nav a:hover {
+  color: red;
 }
 
 main {

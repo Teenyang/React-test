@@ -7,8 +7,10 @@ body {
 }
 
 .App-logo {
-  height: 20vmin;
+  height: 40vmin;
   pointer-events: none;
+
+  transition: height 0.5s ease;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,9 +24,17 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-header-top {
+  justify-content: flex-start;
+}
+.App-header-top .App-logo {
+  height: 20vmin;
 }
 
 .App-link {

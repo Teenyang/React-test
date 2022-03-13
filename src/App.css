@@ -40,3 +40,10 @@ body {
     transform: rotate(360deg);
   }
 }
+
+nav {
+  margin-bottom: 2rem;
+}
+nav a:visited {
+  color: white;
+}

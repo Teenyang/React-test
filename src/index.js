@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import './index.css';
-// import App from './App';
-// import ProductPage from './product/ProductPage.js';
+import App from './App';
+import ProductPage from './product/ProductPage.js';
 import GamePage from './game/GamePage.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <ProductPage /> */}
-    <GamePage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} >
+          <Route path="product" element={<ProductPage />} />
+          <Route path="game" element={<GamePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

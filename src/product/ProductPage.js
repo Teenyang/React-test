@@ -81,18 +81,13 @@ const FilterableProductTable = () => {
   const [text, setText] = useState('');
   const [isShowStocked, setStock] = useState(false);
   return (
-    <main>
-      <h1>PRODUCTS</h1>
+    <>
       <SearchBar
         text={text} setText={setText}
         isShowStocked={isShowStocked} setStock={setStock} />
       <ProductTable text={text} isShowStocked={isShowStocked} />
-    </main>
+    </>
   )
 }
 
-export default function ProductPage() {
-  return (
-    <FilterableProductTable />
-  );
-}
+export default FilterableProductTable;

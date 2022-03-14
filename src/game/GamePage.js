@@ -129,11 +129,4 @@ const Game = () => {
   );
 }
 
-export default function GamePage() {
-  return (
-    <main>
-      <h1>Tic-Tac-Toe</h1>
-      <Game />
-    </main>
-  );
-}
+export default Game;

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import './index.css';
 import App from './App';
-import ProductPage from './product/ProductPage.js';
-import GamePage from './game/GamePage.js';
+import Product from './product/ProductPage.js';
+import Game from './game/GamePage.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -12,8 +12,18 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} >
-          <Route path="product" element={<ProductPage />} />
-          <Route path="game" element={<GamePage />} />
+          <Route path="product" element={
+            <main>
+              <h1>PRODUCTS</h1>
+              <Product />
+            </main>
+          } />
+          <Route path="game" element={
+            <main>
+              <h1>Tic-Tac-Toe</h1>
+              <Game />
+            </main>
+          } />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
               <h1>URL Error! There's nothing here!</h1>

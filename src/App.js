@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { Outlet, Link } from "react-router-dom";
+// import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 import { useState } from 'react';
 
 function App() {
@@ -25,8 +26,16 @@ function App() {
 
         <nav>
           {!isHome ? (<Link to="/" onClick={() => setHome(true)}>Home</Link>) : ''}
-          <Link to="/product" onClick={() => setHome(false)}>Product List</Link>
-          <Link to="/game" onClick={() => setHome(false)}>Tic-Tac-Toe Game</Link>
+          <NavLink to="/product" onClick={() => setHome(false)}
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Product List
+          </NavLink>
+          <NavLink to="/game" onClick={() => setHome(false)}
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Tic-Tac-Toe Game
+          </NavLink>
         </nav>
 
         <Outlet />

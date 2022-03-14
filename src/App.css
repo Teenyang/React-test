@@ -69,9 +69,8 @@ nav a + a {
   padding-left: 1rem;
   border-left: 2px solid white;
 }
-nav a:visited {
-  color: white;
-}
+nav a,
+nav a:visited,
 nav .active-link:visited {
   color: #61dafb;
 }

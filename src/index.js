@@ -14,6 +14,11 @@ ReactDOM.render(
         <Route path="/" element={<App />} >
           <Route path="product" element={<ProductPage />} />
           <Route path="game" element={<GamePage />} />
+          <Route path="*" element={
+            <main style={{ padding: "1rem" }}>
+              <h1>URL Error! There's nothing here!</h1>
+            </main>
+          } />
         </Route>
       </Routes>
     </BrowserRouter>

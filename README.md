@@ -1,7 +1,21 @@
 # React Practice
 
-* 題目參考：React 文件－[用 React 思考](https://zh-hant.reactjs.org/docs/thinking-in-react.html)
-* 功能：搜尋篩選產品、顯示庫存類型
+## 題目一：產品清單 Product List
+#### 題目參考：React 文件－[用 React 思考](https://zh-hant.reactjs.org/docs/thinking-in-react.html)
+* 搜尋篩選產品
+* 顯示庫存類型  
+  
+  
+## 題目二：Tic-Tac-Toe Game
+#### 題目參考：React 文件－[學習指南](https://zh-hant.reactjs.org/tutorial/tutorial.html)
+* 顯示遊戲狀態：下一位玩家、贏家、平手
+* 儲存遊戲紀錄：玩家可回顧整個遊戲歷史階段，並可隨機復原到指定版本的九宮格局面
+* 當前動作提示：在動作列表中，（重新被選取的）目前動作階段加以醒目樣式
+* 改寫Board：使用兩個Loop建立九宮格，取代預設範本
+* 若已出現贏家，則點擊九宮格中的任何空格皆無法再繼續畫記  
+  
+  
+***
 
 ## Getting Started with Create React App
 

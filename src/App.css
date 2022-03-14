@@ -70,7 +70,9 @@ nav a + a {
   border-left: 2px solid white;
 }
 nav a,
-nav a:visited,
+nav a:visited {
+  color: white;
+}
 nav .active-link:visited {
   color: #61dafb;
 }
